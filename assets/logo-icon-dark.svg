@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <!-- Left/Source Card (Light Slate) -->
+  <rect x="5" y="7" width="23" height="24" rx="5" fill="#334155" />
+  <path d="M16.5 13.5L12 24.5H14.3L15.3 22H17.7L18.7 24.5H21L16.5 13.5ZM16.5 16.8L17.2 20.2H15.8L16.5 16.8Z" fill="#FFFFFF" />
+  
+  <!-- Right/Target Card (Royal Blue) -->
+  <rect x="18" y="17" width="25" height="25" rx="6" fill="#0F172A" />
+  <rect x="19" y="18" width="23" height="23" rx="5" fill="#3B82F6" />
+  <rect x="25.5" y="21" width="10" height="1.8" rx="0.9" fill="#FFFFFF" />
+  <rect x="30" y="19.5" width="1.8" height="3.2" rx="0.9" fill="#FFFFFF" />
+  <path d="M25 24.5C28.2 27.5 32 30.5 36.5 33.5M36 24.5C32.8 27.5 29 30.8 24.5 33.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+</svg>

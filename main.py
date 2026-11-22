@@ -1,9 +1,6 @@
 """
-VoxTranslate - Real-Time Voice & Speech Translator
-Created & Developed by Krishna
-
-Universal entry point supporting both the Modern Web Studio (Google-Translate inspired)
-and the Native Desktop GUI.
+Web Translator - Real-Time Voice, Document & Webpage Translation
+Universal entry point supporting both the Modern Web Studio and the Native Desktop GUI.
 """
 
 import sys
@@ -41,18 +38,17 @@ def get_free_port(preferred_port: int = 8000) -> int:
 def run_web(port=8000, auto_open=True):
     """Starts the FastAPI Web Server and opens the browser."""
     import uvicorn
-    from app.config import APP_NAME, APP_VERSION, AUTHOR
+    from app.config import APP_NAME, APP_VERSION
 
     active_port = get_free_port(port)
     if active_port != port:
-        print(f"\n⚠️ Port {port} is currently in use. Automatically switched to port {active_port}!")
+        print(f"\n[Notice] Port {port} is currently in use. Automatically switched to port {active_port}.")
 
     url = f"http://localhost:{active_port}"
-    print("\n" + "=" * 62)
-    print(f"🚀 {APP_NAME} v{APP_VERSION} — Developed by {AUTHOR}")
-    print(f"🌐 Web Studio is live at: {url}")
-    print(f"🎙️ Features: Real-Time Typing, Web Speech Voice Input, Audio Pronounce")
-    print("=" * 62 + "\n")
+    print("\n" + "=" * 60)
+    print(f"  {APP_NAME} v{APP_VERSION}")
+    print(f"  Web application available at: {url}")
+    print("=" * 60 + "\n")
 
     if auto_open:
         try:
@@ -66,15 +62,15 @@ def run_web(port=8000, auto_open=True):
 def run_desktop():
     """Starts the native CustomTkinter desktop GUI."""
     from app.ui import ModernTranslatorApp
-    from app.config import APP_NAME, AUTHOR
+    from app.config import APP_NAME
 
-    print(f"\n[VoxTranslate] Launching Desktop GUI by {AUTHOR}...")
+    print(f"\n[{APP_NAME}] Launching desktop application...")
     app = ModernTranslatorApp()
     app.mainloop()
 
 
 def main():
-    parser = argparse.ArgumentParser(description="VoxTranslate: Real-Time Voice & Speech Translator")
+    parser = argparse.ArgumentParser(description="Web Translator - Real-Time Voice, Document & Webpage Translation")
     parser.add_argument(
         "--mode",
         choices=["web", "desktop"],

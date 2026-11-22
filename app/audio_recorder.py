@@ -1,6 +1,6 @@
 """
 Audio Recording & Speech Detection with SoundDevice
-VoxTranslate Pro - Developed by Krishna
+Web Translator
 """
 
 import threading

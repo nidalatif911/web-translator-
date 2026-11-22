@@ -1,6 +1,6 @@
 """
 Multi-Engine Translation Module
-VoxTranslate Pro - Developed by Krishna
+Web Translator
 """
 
 import logging
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class TranslationService:
-    def __init__(self, email: str = "krishna.developer.voice@gmail.com"):
+    def __init__(self, email: str = "web.translator.service@gmail.com"):
         self.email = email
 
     def translate(self, text: str, source_lang_name: str, target_lang_name: str) -> str:

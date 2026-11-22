@@ -1,6 +1,5 @@
 """
-VoxTranslate Web Server - Real-Time Translation, Documents, Websites & TTS Service
-Developed by Krishna
+Web Translator - Real-Time Translation, Documents, Websites & TTS Service
 """
 
 import os
@@ -15,6 +14,7 @@ from typing import Optional, List
 
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import requests
@@ -25,7 +25,7 @@ import pymupdf
 # Ensure project root is in path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from app.config import LANGUAGES, LANGUAGE_NAMES, APP_NAME, APP_VERSION, AUTHOR
+from app.config import LANGUAGES, LANGUAGE_NAMES, APP_NAME, APP_VERSION
 from app.translator import translate_text
 
 logger = logging.getLogger(__name__)
@@ -34,8 +34,13 @@ logging.basicConfig(level=logging.INFO)
 app = FastAPI(
     title=f"{APP_NAME} API",
     version=APP_VERSION,
-    description=f"Real-time voice, text, document, and website translation service developed by {AUTHOR}"
+    description="Real-time voice, text, document, and website translation service."
 )
+
+# Static files for branding assets (logos, icons, favicons)
+assets_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+if os.path.exists(assets_dir):
+    app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
 
 # CORS Middleware
 app.add_middleware(
@@ -274,11 +279,20 @@ async def handle_tts(req: TTSRequest):
         raise HTTPException(status_code=500, detail=f"TTS error: {e}")
 
 
+@app.get("/favicon.ico")
+async def favicon():
+    """Serves the brand favicon."""
+    fav_ico = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "icon-32.png")
+    if os.path.exists(fav_ico):
+        return FileResponse(fav_ico, media_type="image/png")
+    return HTMLResponse("", status_code=404)
+
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_index():
-    """Serves the modern Google-Translate-inspired web app."""
+    """Serves the modern Web Translator application."""
     html_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web", "index.html")
     if os.path.exists(html_path):
         with open(html_path, "r", encoding="utf-8") as f:
             return f.read()
-    return HTMLResponse("<h3>Web interface not found.</h3>", status_code=404)
+    return HTMLResponse("<h3>Web Translator interface not found.</h3>", status_code=404)

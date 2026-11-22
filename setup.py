@@ -1,19 +1,17 @@
 """
 Setup and Build Configuration
-VoxTranslate Pro - Developed by Krishna
+Web Translator
 """
 
 from setuptools import setup, find_packages
 
 setup(
-    name="voxtranslate-pro",
+    name="web-translator",
     version="2.5.0",
-    description="Real-Time AI Voice, Speech & Document Translator",
+    description="Web Translator - Real-Time Voice, Document, Image & Webpage Translation",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    author="Krishna",
-    author_email="krishna.developer@example.com",
-    url="https://github.com/krishna/real-time-voice-translator",
+    url="https://github.com/krishna-Deshmukh13/real-time-voice-translator",
     packages=find_packages(),
     install_requires=[
         "fastapi>=0.110.0",
@@ -31,7 +29,8 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "voxtranslate=main:main",
+            "web-translator=main:main",
+            "webtranslator=main:main",
         ],
     },
     classifiers=[

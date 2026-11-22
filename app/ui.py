@@ -1,6 +1,6 @@
 """
 Modern, Professional CustomTkinter UI
-VoxTranslate Pro - Developed by Krishna
+Web Translator
 """
 
 import os
@@ -20,7 +20,6 @@ from app.config import (
     APP_NAME,
     APP_SUBTITLE,
     APP_VERSION,
-    AUTHOR,
     GITHUB_URL,
     LANGUAGES,
     LANGUAGE_NAMES,
@@ -41,12 +40,15 @@ class ModernTranslatorApp(ctk.CTk):
         super().__init__()
 
         # Window Setup
-        self.title(f"{APP_NAME} — Developed by {AUTHOR}")
+        self.title(f"{APP_NAME}")
         self.geometry("980x780")
         self.minsize(840, 680)
 
         # Set App Icon if exists
-        icon_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "icon.ico")
+        base_dir = os.path.dirname(os.path.dirname(__file__))
+        icon_path = os.path.join(base_dir, "assets", "icon.ico")
+        if not os.path.exists(icon_path):
+            icon_path = os.path.join(base_dir, "icon.ico")
         if os.path.exists(icon_path):
             try:
                 self.iconbitmap(icon_path)
@@ -95,14 +97,14 @@ class ModernTranslatorApp(ctk.CTk):
 
         app_title = ctk.CTkLabel(
             title_box,
-            text=f"🎙️ {APP_NAME}",
+            text=f"🌐 {APP_NAME}",
             font=ctk.CTkFont(family="Segoe UI", size=22, weight="bold")
         )
         app_title.pack(anchor="w")
 
         subtitle = ctk.CTkLabel(
             title_box,
-            text=f"{APP_SUBTITLE}  •  Built with ❤️ by {AUTHOR}",
+            text=f"{APP_SUBTITLE}",
             font=ctk.CTkFont(family="Segoe UI", size=12),
             text_color="gray40"
         )
@@ -439,8 +441,8 @@ class ModernTranslatorApp(ctk.CTk):
 
         footer_credit = ctk.CTkLabel(
             hist_frame,
-            text=f"VoxTranslate Pro v{APP_VERSION} • Developed by {AUTHOR}",
-            font=ctk.CTkFont(family="Segoe UI", size=11, weight="bold"),
+            text=f"© 2026 {APP_NAME}. All rights reserved.",
+            font=ctk.CTkFont(family="Segoe UI", size=11),
             text_color="gray45"
         )
         footer_credit.pack(side="right")
@@ -680,7 +682,6 @@ class ModernTranslatorApp(ctk.CTk):
         try:
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write(f"=== {APP_NAME} Translation Log ===\n")
-                f.write(f"Developed by {AUTHOR}\n")
                 f.write(f"Exported on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
                 for item in self.history_records:
                     f.write(f"[{item['time']}] {item['source_lang']} -> {item['target_lang']}\n")
@@ -694,7 +695,7 @@ class ModernTranslatorApp(ctk.CTk):
     def _show_about_dialog(self):
         dialog = ctk.CTkToplevel(self)
         dialog.title(f"About {APP_NAME}")
-        dialog.geometry("480x420")
+        dialog.geometry("480x400")
         dialog.resizable(False, False)
         dialog.transient(self)
         dialog.grab_set()
@@ -704,7 +705,7 @@ class ModernTranslatorApp(ctk.CTk):
 
         title = ctk.CTkLabel(
             content,
-            text=f"🎙️ {APP_NAME}",
+            text=f"🌐 {APP_NAME}",
             font=ctk.CTkFont(family="Segoe UI", size=20, weight="bold")
         )
         title.pack(pady=(16, 4))
@@ -720,14 +721,14 @@ class ModernTranslatorApp(ctk.CTk):
         desc = ctk.CTkLabel(
             content,
             text=(
-                f"{APP_NAME} is an intelligent, real-time voice and speech\n"
-                "translation platform designed for seamless cross-lingual\n"
-                "conversations with sub-second latency and natural neural audio.\n\n"
-                f"• Created & Architected by: {AUTHOR}\n"
-                "• Audio Engine: SoundDevice PortAudio\n"
-                "• Speech Recognition: Google Web Speech API\n"
-                "• Translation Engine: Multi-Engine Fallback Service\n"
-                "• Speech Synthesis: Google TTS & Offline SAPI5"
+                f"{APP_NAME} is an intelligent, real-time voice, text, document,\n"
+                "and web translation platform designed for seamless cross-lingual\n"
+                "communication with low latency and high accuracy.\n\n"
+                "• Audio Engine: SoundDevice PortAudio Stream\n"
+                "• Speech Recognition: Web Speech API & Neural STT\n"
+                "• Translation Engine: Multi-Engine Fallback Cascade\n"
+                "• Speech Synthesis: Neural TTS & SAPI5\n\n"
+                f"© 2026 {APP_NAME}. All rights reserved."
             ),
             font=ctk.CTkFont(family="Segoe UI", size=13),
             justify="center"

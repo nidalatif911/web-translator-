@@ -1,13 +1,13 @@
 """
 Application Configuration and Constants
-VoxTranslate Pro - Developed by Krishna
+Web Translator
 """
 
-APP_NAME = "VoxTranslate Pro"
-APP_SUBTITLE = "Real-Time AI Voice & Speech Translator"
+APP_NAME = "Web Translator"
+APP_SUBTITLE = "Real-Time Voice, Document & Webpage Translation"
 APP_VERSION = "2.5.0"
-AUTHOR = "Krishna"
-GITHUB_URL = "https://github.com/krishna/real-time-voice-translator"
+AUTHOR = "Web Translator"
+GITHUB_URL = "https://github.com/krishna-Deshmukh13/real-time-voice-translator"
 
 # Audio Recording Settings
 SAMPLE_RATE = 16000

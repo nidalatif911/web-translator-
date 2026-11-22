@@ -1,5 +1,4 @@
-# VoxTranslate Pro - Dependencies
-# Developed by Krishna
+# Web Translator - Dependencies
 
 fastapi>=0.110.0
 uvicorn>=0.28.0

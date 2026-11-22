@@ -1,6 +1,6 @@
 """
 Text-to-Speech (TTS) Engine and Audio Playback
-VoxTranslate Pro - Developed by Krishna
+Web Translator
 """
 
 import os
